@@ -1,0 +1,390 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Legal Prestige Theme - Sophisticated & Professional */
+
+:root {
+  --legal-primary: #d97706;
+  --legal-secondary: #0f172a;
+  --legal-accent: #f59e0b;
+  --legal-dark: #1e293b;
+  --legal-light: #f8fafc;
+}
+
+@layer base {
+  body {
+    @apply scroll-smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair);
+  }
+}
+
+@layer components {
+  /* Legal Document Style Animations */
+  .legal-seal {
+    animation: sealStamp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  
+  .gavel-strike {
+    animation: gavelHit 0.6s ease-in-out;
+  }
+  
+  .scroll-reveal {
+    animation: scrollReveal 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  
+  /* Luxury Underline Effect */
+  .legal-underline {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .legal-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #d97706, #f59e0b);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .legal-underline:hover::after {
+    width: 100%;
+  }
+  
+  /* Justice Scale Balance Effect */
+  .balance-scale {
+    animation: balanceSwing 3s ease-in-out infinite;
+    transform-origin: center top;
+  }
+  
+  /* Signature Line Animation */
+  .signature-line {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .signature-line::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d97706, transparent);
+    animation: signatureDraw 2s ease-in-out infinite;
+  }
+  
+  /* Legal Brief Card */
+  .legal-card {
+    @apply bg-white rounded-xl shadow-lg p-8 border-l-4 border-amber-600 transition-all duration-500 hover:shadow-2xl hover:scale-105;
+    background-image: 
+      linear-gradient(to bottom, rgba(217, 119, 6, 0.03), transparent),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 35px,
+        rgba(148, 163, 184, 0.1) 35px,
+        rgba(148, 163, 184, 0.1) 36px
+      );
+  }
+  
+  /* Courtroom Pillar Effect */
+  .pillar-shadow {
+    box-shadow: 
+      0 10px 30px -5px rgba(15, 23, 42, 0.3),
+      0 0 0 1px rgba(217, 119, 6, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Legal Badge */
+  .legal-badge {
+    @apply inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold text-sm shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-xl;
+  }
+  
+  /* Testimony Quote */
+  .testimony-quote {
+    @apply relative bg-gradient-to-br from-slate-50 to-amber-50 rounded-xl p-8 border-2 border-amber-200 shadow-lg;
+  }
+  
+  .testimony-quote::before {
+    content: '"';
+    @apply absolute text-9xl font-serif text-amber-600/20 -top-6 -left-2;
+  }
+  
+  /* Statute Book Spine */
+  .book-spine {
+    @apply relative overflow-hidden;
+  }
+  
+  .book-spine::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-amber-700 via-amber-600 to-amber-700;
+  }
+  
+  /* Gradient Text */
+  .legal-gradient-text {
+    @apply bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 bg-clip-text text-transparent;
+  }
+  
+  /* Professional Button */
+  .btn-legal {
+    @apply bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 active:scale-95;
+    box-shadow: 0 4px 14px 0 rgba(217, 119, 6, 0.4);
+  }
+  
+  .btn-legal:hover {
+    box-shadow: 0 6px 20px 0 rgba(217, 119, 6, 0.6);
+  }
+  
+  /* Letterhead Border */
+  .letterhead {
+    @apply relative;
+    border-image: linear-gradient(
+      to bottom,
+      #d97706,
+      #f59e0b,
+      #d97706
+    ) 1;
+  }
+  
+  /* Legal Divider */
+  .legal-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent my-8;
+  }
+  
+  /* Wax Seal Effect */
+  .wax-seal {
+    @apply w-16 h-16 rounded-full bg-gradient-to-br from-red-700 to-red-900 flex items-center justify-center shadow-lg relative;
+  }
+  
+  .wax-seal::before {
+    content: '';
+    @apply absolute inset-2 rounded-full border-2 border-red-400/30;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes sealStamp {
+    0% {
+      transform: scale(0) rotate(-180deg);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1) rotate(10deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes gavelHit {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-25deg);
+    }
+    75% {
+      transform: rotate(5deg);
+    }
+  }
+  
+  @keyframes scrollReveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes balanceSwing {
+    0%, 100% {
+      transform: rotate(-2deg);
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+  }
+  
+  @keyframes signatureDraw {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  
+  .shimmer {
+    animation: shimmer 3s infinite linear;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(217, 119, 6, 0.2) 50%,
+      transparent 100%
+    );
+    background-size: 1000px 100%;
+  }
+  
+  /* Parallax Effect */
+  .parallax {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Marble Texture */
+  .marble-bg {
+    background-color: #f8fafc;
+    background-image: 
+      linear-gradient(135deg, transparent 0%, rgba(217, 119, 6, 0.03) 100%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d97706' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  /* Leather Texture */
+  .leather-texture {
+    background-color: #0f172a;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(217, 119, 6, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(217, 119, 6, 0.1) 0%, transparent 50%);
+  }
+  
+  /* Gold Foil Effect */
+  .gold-foil {
+    background: linear-gradient(
+      135deg,
+      #d97706 0%,
+      #f59e0b 25%,
+      #fbbf24 50%,
+      #f59e0b 75%,
+      #d97706 100%
+    );
+    background-size: 200% 200%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  
+  /* Scroll Progress Bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #d97706, #f59e0b);
+    z-index: 9999;
+    transform-origin: left;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d97706, #f59e0b);
+  border-radius: 6px;
+  border: 2px solid #1e293b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f59e0b, #fbbf24);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(217, 119, 6, 0.3);
+  color: #0f172a;
+}
+
+::-moz-selection {
+  background-color: rgba(217, 119, 6, 0.3);
+  color: #0f172a;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    @apply bg-white text-black;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Focus Styles for Accessibility */
+a:focus-visible,
+button:focus-visible {
+  @apply outline-none ring-4 ring-amber-500 ring-offset-2 ring-offset-slate-900;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
